@@ -11,5 +11,8 @@ OBJCOPY         = $(CROSS_COMPILE)objcopy
 OBJDUMP         = $(CROSS_COMPILE)objdump
 
 
-povacca: pomain.c poadd.c pomul.c popop.c
-	$(CC) $(CFLAGS) $^ -Wl,-T,povacca.lds -o $@
+povacca: povacca.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^  -o $@
+
+povacca.o: pomain.o poadd.o pomul.o popop.o
+	$(LD) -r -T bigobj.lds $^ -o $@
