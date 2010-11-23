@@ -3,7 +3,6 @@
 #include <string.h>
 #include "povacca.h"
 
-
 static int onestring (struct pv_stack *s, char *str)
 {
 	struct pv_oper *p;
@@ -16,7 +15,6 @@ static int onestring (struct pv_stack *s, char *str)
 		s->v[s->sp++] = i;
 		return 0;
 	}
-	
 
 	/* not a number: operands */
 	for (p = &pv_first; p < &pv_last; p++)
