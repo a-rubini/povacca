@@ -17,10 +17,10 @@ static int onestring (struct pv_stack *s, char *str)
 	}
 
 	/* not a number: operands */
-	for (p = &pv_first; p < &pv_last; p++)
+	for (p = pv_first; p < pv_last; p++)
 		if (!strcmp(str, p->name))
 			break;
-	if (p == &pv_last) {
+	if (p == pv_last) {
 		fprintf(stderr, "%s: not found\n", str);
 		return -1;
 	}

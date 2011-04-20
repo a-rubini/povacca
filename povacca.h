@@ -10,7 +10,7 @@ struct pv_oper {
     int (*f)(struct pv_stack *s, char *str);
 };
 
-extern struct pv_oper pv_first, pv_last;
+extern struct pv_oper pv_first[], pv_last[];
 
 #define pv_operand(sname, name, f)        \
     struct pv_oper                        \
