@@ -1,0 +1,55 @@
+
+This is a trivial RPN calculator. It is meant to explain ELF sections
+(or named sections in general).
+
+	when
+	====
+
+It was born as code to be written during a lesson, and the first
+commit here is actually what I wrote on 2009-05-20 white teaching.
+
+	who
+	===
+
+Me for my students
+
+	why
+	===
+
+Because I needed something horribly simple to show use of named
+sections. The name is an Italian joke on "polish", I'd better keep it
+as most of my students are Italian anyways.
+
+	what
+	====
+
+An RPN calculator from command line: "./povacca 4 5 +". It knows
+the following operators:
+  "+" and "add" (synonyms) from poadd.c
+  "*" and "mul" (synonyms) from pomul.c
+  "pop" from popop.c
+
+	how (whow?)
+	===========
+
+Using named sections. Definitions of operators live in a separate
+.oper section, so the linker juxtaposes all of them in the output
+file. A linker script (povacca.lds) is used to merge this section in
+the .data section, and to add named symbols for the start and end of
+the .oper array.
+
+The net effect is that you can drop new files in the source directory
+to add new operators (you'll need to add the object names to Makefile too).
+You'll never need to change pomain.c in order to add operators.
+
+
+	what's next?
+	===========
+
+Nothing. Small examples should remain small. Thanks to Emilio Garcia Cota
+for adding "make clean" and ".gitignore", but that's all.
+
+Well... we should find a way to compile this under Windows, as named sections
+are useful in a number of contexts. In my initial tests "ld -r" was
+complaining.  Marco Pizzamiglio is working on it, so let's hope he can
+work around the braindeadness of those binary formats.
