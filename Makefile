@@ -16,3 +16,8 @@ povacca: povacca.o
 
 povacca.o: pomain.o poadd.o pomul.o popop.o
 	$(LD) -r -T bigobj.lds $^ -o $@
+
+clean:
+	rm -rf *.o
+
+.PHONY: clean
