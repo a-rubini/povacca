@@ -6,7 +6,7 @@ This is a trivial RPN calculator. It is meant to explain ELF sections
 	====
 
 It was born as code to be written during a lesson, and the first
-commit here is actually what I wrote on 2009-05-20 white teaching.
+commit here is actually what I wrote on 2009-05-20 while teaching.
 
 	who
 	===
@@ -16,14 +16,14 @@ Me for my students
 	why
 	===
 
-Because I needed something horribly simple to show use of named
+Because I needed something horribly simple to show the use of named
 sections. The name is an Italian joke on "polish", I'd better keep it
-as most of my students are Italian anyways.
+unchanged as most of my students are Italian anyways.
 
 	what
 	====
 
-An RPN calculator from command line: "./povacca 4 5 +". It knows
+An RPN calculator for the  command line: "./povacca 4 5 +". It knows
 the following operators:
   "+" and "add" (synonyms) from poadd.c
   "*" and "mul" (synonyms) from pomul.c
@@ -34,7 +34,7 @@ the following operators:
 
 Using named sections. Definitions of operators live in a separate
 .oper section, so the linker juxtaposes all of them in the output
-file. A linker script (povacca.lds) is used to merge this section in
+file. A linker script (bigobj.lds) is used to merge this section in
 the .data section, and to add named symbols for the start and end of
 the .oper array.
 
@@ -49,7 +49,8 @@ You'll never need to change pomain.c in order to add operators.
 Nothing. Small examples should remain small. Thanks to Emilio Garcia Cota
 for adding "make clean" and ".gitignore", but that's all.
 
-Well... we should find a way to compile this under Windows, as named sections
-are useful in a number of contexts. In my initial tests "ld -r" was
-complaining.  Marco Pizzamiglio is working on it, so let's hope he can
-work around the braindeadness of those binary formats.
+Well... I must add a way to compile this under Windows, as named sections
+are useful in a number of contexts. The solution is simple but it took
+a while to find, as "ld -r" alone is complaining with gcc for windows.
+Marco Pizzamiglio documented the procedure (in Italian) and I'm too
+lazy to include it here. Please ask if interested.
